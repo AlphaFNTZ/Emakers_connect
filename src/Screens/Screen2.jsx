@@ -1,7 +1,8 @@
 import * as React from "react";
 import { styled } from "styled-components";
+import { autoRun } from "../Animations/Animation_autoRun";
 import BackGround_2 from "../../public/assets/Screen_2.png";
-import Details_2 from "../../public/assets/Cerca.png";
+import Fence from "../../public/assets/Pedaco_cerca.png";
 
 const Screen2 = styled.section`
 	display: flex;
@@ -15,19 +16,36 @@ const Screen2 = styled.section`
 	background-size: cover;
 `;
 
-const Details2 = styled.div`
+const Container1 = styled.div`
+	display: flex;
+	bottom: -37%;
 	position: relative;
-	z-index: 0;
-	right: 0px;
-	bottom: -36%;
+	justify-content: flex-start; /* Esconde o conteúdo que sai da tela */
+	width: 100%; /* Largura total do container */
+	.pieceFence {
+		flex-shrink: 0; /* Garante que cada imagem mantenha seu tamanho */
+		width: 206px; /* Defina a largura da imagem, ajuste conforme necessário */
+		animation: ${autoRun} 5s linear infinite;
+		margin-right: -1.5px;
+	}
 `;
 
 function Screen_2() {
 	return (
 		<Screen2 id="screen2">
-			<Details2>
-				<img src={Details_2} />
-			</Details2>
+			<Container1>
+				<img src={Fence} className="pieceFence" />
+				<img src={Fence} className="pieceFence" />
+				<img src={Fence} className="pieceFence" />
+				<img src={Fence} className="pieceFence" />
+				<img src={Fence} className="pieceFence" />
+				<img src={Fence} className="pieceFence" />
+				<img src={Fence} className="pieceFence" />
+				<img src={Fence} className="pieceFence" />
+				<img src={Fence} className="pieceFence" />
+				<img src={Fence} className="pieceFence" />
+				<img src={Fence} className="pieceFence" />
+			</Container1>
 		</Screen2>
 	);
 }

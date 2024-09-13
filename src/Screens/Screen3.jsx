@@ -1,6 +1,7 @@
 import * as React from "react";
 import { styled } from "styled-components";
-import Details_3 from "../../public/assets/Terra.png";
+import { autoRun } from "../Animations/Animation_autoRun";
+import Floor from "../../public/assets/Pedaco_chao.png";
 
 const Screen3 = styled.section`
 	display: flex;
@@ -13,19 +14,36 @@ const Screen3 = styled.section`
 	background: linear-gradient(0, rgb(44, 16, 45) 31%, #6b3b55 90%);
 `;
 
-const Details3 = styled.div`
-	position: relative;
-	z-index: 0;
-	right: 0px;
+const Container2 = styled.div`
+	display: flex;
 	bottom: -36.7%;
+	position: relative;
+	justify-content: flex-start; /* Esconde o conteúdo que sai da tela */
+	width: 100%; /* Largura total do container */
+	.pieceFloor {
+		flex-shrink: 0; /* Garante que cada imagem mantenha seu tamanho */
+		width: 206px; /* Defina a largura da imagem, ajuste conforme necessário */
+		animation: ${autoRun} 5s linear infinite;
+		margin-right: -1.5px;
+	}
 `;
 
 function Screen_3() {
 	return (
 		<Screen3 id="screen3">
-			<Details3>
-				<img src={Details_3} />
-			</Details3>
+			<Container2>
+				<img src={Floor} className="pieceFloor" />
+				<img src={Floor} className="pieceFloor" />
+				<img src={Floor} className="pieceFloor" />
+				<img src={Floor} className="pieceFloor" />
+				<img src={Floor} className="pieceFloor" />
+				<img src={Floor} className="pieceFloor" />
+				<img src={Floor} className="pieceFloor" />
+				<img src={Floor} className="pieceFloor" />
+				<img src={Floor} className="pieceFloor" />
+				<img src={Floor} className="pieceFloor" />
+				<img src={Floor} className="pieceFloor" />
+			</Container2>
 		</Screen3>
 	);
 }

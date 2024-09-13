@@ -51,7 +51,7 @@ function App() {
 
 	const handleScroll = (event) => {
 		const scrollY = event.target.scrollTop;
-		const page = Math.floor(scrollY / window.innerHeight) + 1;
+		const page = Math.round(scrollY / window.innerHeight) + 1;
 		setCurrentPage(page);
 
 		if (page > 1) {
