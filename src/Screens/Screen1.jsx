@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect, useRef, useState } from 'react';
 import { styled } from "styled-components";
 import BackGround_1 from "../../public/assets/Screen_1.png";
 import Logo_NavBar from "../../public/assets/Logo_NavBar_Branco.png";
@@ -15,6 +15,7 @@ const Screen1 = styled.div`
 	background-image: url(${BackGround_1});
 	background-size: cover;
 	font-family: "ArcadeClassic", sans-serif;
+	position:relative;
 `;
 
 const H1_Styled = styled.h1`
@@ -81,10 +82,74 @@ const Logo_NavBar_Branco = styled.div`
 	top: 20px;
 	left: 20px;
 `;
+const Rain = styled.div`
+  display: flex;
+  width: 10px;
+  height: 10px;
+  background: white;
+  position: absolute;
+  top: -150px;
+  gap: 50px;
+ 
+  animation: rain-fall var(--animation-duration) linear;
+  animation-delay: var(--animation-delay);
+
+  @keyframes rain-fall {
+    0% {
+      transform: translate(-130%, -100%) ; /* Manter rotação inicial */
+    }
+    100% {
+      transform: translate(100vw, 130vh) ; /* Manter rotação final */
+    }
+  }
+`;
 
 function Screen_1() {
+	const rainRefs = useRef([]);
+	const [reset, setReset] = useState(false);
+  
+	useEffect(() => {
+	  	const animationSettings = [
+			{ duration: '3s', delay: '0s'},
+			{ duration: '1s', delay: '1s'},
+			{ duration: '2s', delay: '2s'}
+	  	];
+  
+	  	rainRefs.current.forEach((rain, index) => {
+			if (rain && animationSettings[index]) {
+		  		const { duration, delay, angle } = animationSettings[index];
+		  		rain.style.setProperty('--animation-duration', duration);
+		  		rain.style.setProperty('--animation-delay', delay);
+			}
+	  	});
+  
+	  	const interval = setInterval(() => {
+			rainRefs.current.forEach(rain => {
+		  	if (rain) {
+				rain.style.animation = 'none'; // Stop current animation
+				rain.offsetHeight; // Trigger reflow
+				rain.style.animation = ''; // Restart animation
+		  	}
+			});
+	  	}, 10000); // Reiniciar animação a cada 10 segundos
+  
+	  	return () => clearInterval(interval); // Limpar intervalo ao desmontar
+	}, [reset]);
+  
+	useEffect(() => {
+	  setReset(prev => !prev); // Alternar estado para forçar reinício
+	}, []);
+  
+	const starPositions = ['-40vw', '10vw', '40vw'];	
 	return (
 		<Screen1>
+			{Array.from({ length: 3 }).map((_, index) => (
+        		<Rain
+          		key={index}
+          		ref={(el) => (rainRefs.current[index] = el)}
+          		style={{ left: starPositions[index] }}
+        		/>
+      		))}
 			<Logo_NavBar_Branco>
 				<img src={Logo_NavBar} alt="" />
 			</Logo_NavBar_Branco>
