@@ -118,7 +118,7 @@ const Balloon_text = styled.div`
 	height: 500px;
 	@media (max-width: 767px) {
 		width: 365px;
-		height: 530px;
+		height: 400px;
 	}
 `;
 
