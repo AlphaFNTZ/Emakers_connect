@@ -1,6 +1,7 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import { createGlobalStyle, styled } from "styled-components";
 import Logo_NavBar from "../public/assets/Logo_NavBar.png";
+import Icon_Menu from "../public/assets/Icons/icon_menu.png";
 import Screen_1 from "./Screens/Screen1";
 import Screen_2 from "./Screens/Screen2";
 import Screen_3 from "./Screens/Screen3";
@@ -26,6 +27,7 @@ const Conteiner = styled.div`
 `;
 
 const NavBar = styled.div`
+	display: flex;
 	position: fixed;
 	top: ${(props) => (props.isVisible ? "0" : "-100px")};
 	left: 0;
@@ -34,6 +36,23 @@ const NavBar = styled.div`
 	background-color: white;
 	z-index: 10;
 	transition: top 0.5s ease;
+
+	img {
+		align-self: center;
+		height: 60px;
+		width: 190px;
+		margin-left: 20px;
+	}
+
+	@media (max-width: 767px) {
+		height: 67px;
+		img {
+			align-self: center;
+			height: 40px;
+			width: 40px;
+			margin-left: 20px;
+		}
+	}
 `;
 
 const Logo = styled.div`
@@ -54,6 +73,7 @@ const Teste = styled.div`
 function App() {
 	const [currentPage, setCurrentPage] = React.useState(1);
 	const [showNavBar, setShowNavBar] = React.useState(false);
+	const [isMobile, setIsMobile] = useState(window.innerWidth <= 767);
 
 	const handleScroll = (event) => {
 		const scrollY = event.target.scrollTop;
@@ -67,13 +87,24 @@ function App() {
 		}
 	};
 
+	useEffect(() => {
+		const handleResize = () => {
+			setIsMobile(window.innerWidth <= 767);
+		};
+
+		window.addEventListener("resize", handleResize);
+
+		// Cleanup listener on unmount
+		return () => {
+			window.removeEventListener("resize", handleResize);
+		};
+	}, []);
+
 	return (
 		<>
 			<GlobalStyle />
 			<NavBar isVisible={showNavBar}>
-				<Logo>
-					<img src={Logo_NavBar} alt="" />
-				</Logo>
+				<img src={isMobile ? Icon_Menu : Logo_NavBar} alt="Logo" />
 			</NavBar>
 			<Conteiner onScroll={handleScroll}>
 				<Screen_1 />

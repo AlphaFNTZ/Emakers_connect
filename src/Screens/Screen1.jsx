@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from "react";
 import { styled } from "styled-components";
 import BackGround_1 from "../../public/assets/Screen_1.png";
 import Logo_NavBar from "../../public/assets/Logo_NavBar_Branco.png";
@@ -15,7 +15,7 @@ const Screen1 = styled.div`
 	background-image: url(${BackGround_1});
 	background-size: cover;
 	font-family: "ArcadeClassic", sans-serif;
-	position:relative;
+	position: relative;
 `;
 
 const H1_Styled = styled.h1`
@@ -28,6 +28,11 @@ const H1_Styled = styled.h1`
 	font-size: 200px;
 	font-weight: 200;
 	overflow-wrap: break-word;
+	@media (max-width: 767px) {
+		width: 430px;
+		height: 130px;
+		font-size: 90px;
+	}
 `;
 
 const H2_Styled = styled.h2`
@@ -40,6 +45,12 @@ const H2_Styled = styled.h2`
 	height: 21px;
 	margin-top: 5vh;
 	word-spacing: 15px;
+	@media (max-width: 767px) {
+		width: 430px;
+		height: 38px;
+		font-size: 24px;
+		word-spacing: 0px;
+	}
 `;
 
 const Link_Styled = styled.a`
@@ -58,6 +69,7 @@ const Link_Styled = styled.a`
 	cursor: pointer;
 
 	svg {
+		position: absolute;
 		opacity: 0;
 		transform: translateX(-20px);
 		transition: opacity 0.3s ease, transform 0.3s ease;
@@ -67,6 +79,11 @@ const Link_Styled = styled.a`
 		opacity: 1;
 		transform: translateX(0);
 	}
+
+	@media (max-width: 767px) {
+		margin-top: 10px;
+		font-size: 24px;
+	}
 `;
 
 const Escolhas = styled.div`
@@ -75,81 +92,92 @@ const Escolhas = styled.div`
 	align-items: center;
 	justify-content: center;
 	margin-top: 5vh;
+
+	@media (max-width: 767px) {
+		margin-top: 2vh;
+	}
 `;
 
 const Logo_NavBar_Branco = styled.div`
+	display: flex;
 	position: absolute;
+	width: 100%;
 	top: 20px;
 	left: 20px;
+	@media (max-width: 767px) {
+		top: 20px;
+		left: 0px;
+		justify-content: center;
+	}
 `;
 const Rain = styled.div`
-  display: flex;
-  width: 10px;
-  height: 10px;
-  background: white;
-  position: absolute;
-  top: -150px;
-  gap: 50px;
- 
-  animation: rain-fall var(--animation-duration) linear;
-  animation-delay: var(--animation-delay);
+	display: flex;
+	width: 10px;
+	height: 10px;
+	background: white;
+	position: absolute;
+	top: -150px;
+	gap: 50px;
 
-  @keyframes rain-fall {
-    0% {
-      transform: translate(-130%, -100%) ; /* Manter rotação inicial */
-    }
-    100% {
-      transform: translate(100vw, 130vh) ; /* Manter rotação final */
-    }
-  }
+	animation: rain-fall var(--animation-duration) linear;
+	animation-delay: var(--animation-delay);
+
+	@keyframes rain-fall {
+		0% {
+			transform: translate(-130%, -100%); /* Manter rotação inicial */
+		}
+		100% {
+			transform: translate(100vw, 130vh); /* Manter rotação final */
+		}
+	}
 `;
 
 function Screen_1() {
 	const rainRefs = useRef([]);
 	const [reset, setReset] = useState(false);
-  
+
 	useEffect(() => {
-	  	const animationSettings = [
-			{ duration: '3s', delay: '0s'},
-			{ duration: '1s', delay: '1s'},
-			{ duration: '2s', delay: '2s'}
-	  	];
-  
-	  	rainRefs.current.forEach((rain, index) => {
+		const animationSettings = [
+			{ duration: "3s", delay: "0s" },
+			{ duration: "1s", delay: "1s" },
+			{ duration: "2s", delay: "2s" },
+		];
+
+		rainRefs.current.forEach((rain, index) => {
 			if (rain && animationSettings[index]) {
-		  		const { duration, delay, angle } = animationSettings[index];
-		  		rain.style.setProperty('--animation-duration', duration);
-		  		rain.style.setProperty('--animation-delay', delay);
+				const { duration, delay, angle } = animationSettings[index];
+				rain.style.setProperty("--animation-duration", duration);
+				rain.style.setProperty("--animation-delay", delay);
 			}
-	  	});
-  
-	  	const interval = setInterval(() => {
-			rainRefs.current.forEach(rain => {
-		  	if (rain) {
-				rain.style.animation = 'none'; // Stop current animation
-				rain.offsetHeight; // Trigger reflow
-				rain.style.animation = ''; // Restart animation
-		  	}
+		});
+
+		const interval = setInterval(() => {
+			rainRefs.current.forEach((rain) => {
+				if (rain) {
+					rain.style.animation = "none"; // Stop current animation
+					rain.offsetHeight; // Trigger reflow
+					rain.style.animation = ""; // Restart animation
+				}
 			});
-	  	}, 10000); // Reiniciar animação a cada 10 segundos
-  
-	  	return () => clearInterval(interval); // Limpar intervalo ao desmontar
+		}, 10000); // Reiniciar animação a cada 10 segundos
+
+		return () => clearInterval(interval); // Limpar intervalo ao desmontar
 	}, [reset]);
-  
+
 	useEffect(() => {
-	  setReset(prev => !prev); // Alternar estado para forçar reinício
+		setReset((prev) => !prev); // Alternar estado para forçar reinício
 	}, []);
-  
-	const starPositions = ['-40vw', '10vw', '40vw'];	
+
+	const starPositions = ["-40vw", "10vw", "40vw"];
 	return (
 		<Screen1>
 			{Array.from({ length: 3 }).map((_, index) => (
-        		<Rain
-          		key={index}
-          		ref={(el) => (rainRefs.current[index] = el)}
-          		style={{ left: starPositions[index] }}
-        		/>
-      		))}
+				<Rain
+					key={index}
+					ref={(el) => (rainRefs.current[index] = el)}
+					style={{ left: starPositions[index] }}
+				/>
+			))}
 			<Logo_NavBar_Branco>
 				<img src={Logo_NavBar} alt="" />
 			</Logo_NavBar_Branco>

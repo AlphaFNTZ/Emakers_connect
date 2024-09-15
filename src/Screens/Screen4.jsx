@@ -7,6 +7,7 @@ import Cavern_back from "../../public/assets/Cavena_fundo.png";
 
 const Screen4 = styled.section`
 	display: flex;
+	position: relative;
 	z-index: -2;
 	flex-direction: column;
 	align-items: center;
@@ -20,8 +21,8 @@ const Screen4 = styled.section`
 const Container3 = styled.div`
 	display: flex;
 	z-index: 5;
-	top: -550px;
-	position: relative;
+	top: 0px;
+	position: absolute;
 	justify-content: flex-start; /* Esconde o conteúdo que sai da tela */
 	width: 100%; /* Largura total do container */
 	.pieceCavern {
@@ -30,12 +31,19 @@ const Container3 = styled.div`
 		animation: ${autoRun} 5s linear infinite;
 		margin-right: -1.5px;
 	}
+	@media (max-width: 767px) {
+		top: 0px;
+		.pieceCavern {
+			width: 110px; /* Defina a largura da imagem, ajuste conforme necessário */
+		}
+	}
 `;
 
 const Back_cavern = styled.div`
 	display: flex;
-	position: relative;
-	top: 20px;
+	position: absolute;
+	z-index: 2;
+	top: 200px;
 	justify-content: flex-start; /* Esconde o conteúdo que sai da tela */
 	width: 100%; /* Largura total do container */
 	.pieceCavernBack {
@@ -43,6 +51,12 @@ const Back_cavern = styled.div`
 		width: 206px; /* Defina a largura da imagem, ajuste conforme necessário */
 		animation: ${autoRun} 20s linear infinite;
 		margin-right: -1.5px;
+	}
+	@media (max-width: 767px) {
+		top: 120px;
+		.pieceCavernBack {
+			width: 110px;
+		}
 	}
 `;
 

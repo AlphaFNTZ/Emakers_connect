@@ -5,6 +5,7 @@ import Floor from "../../public/assets/Pedaco_chao.png";
 
 const Screen3 = styled.section`
 	display: flex;
+	position: relative;
 	z-index: -2;
 	flex-direction: column;
 	align-items: center;
@@ -16,8 +17,8 @@ const Screen3 = styled.section`
 
 const Container2 = styled.div`
 	display: flex;
-	bottom: -36.7%;
-	position: relative;
+	bottom: 0px;
+	position: absolute;
 	justify-content: flex-start; /* Esconde o conteúdo que sai da tela */
 	width: 100%; /* Largura total do container */
 	.pieceFloor {
@@ -25,6 +26,12 @@ const Container2 = styled.div`
 		width: 206px; /* Defina a largura da imagem, ajuste conforme necessário */
 		animation: ${autoRun} 5s linear infinite;
 		margin-right: -1.5px;
+	}
+	@media (max-width: 767px) {
+		bottom: 0px;
+		.pieceFloor {
+			width: 130px; /* Defina a largura da imagem, ajuste conforme necessário */
+		}
 	}
 `;
 
