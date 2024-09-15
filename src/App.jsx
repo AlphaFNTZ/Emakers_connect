@@ -45,6 +45,12 @@ const Logo = styled.div`
 	justify-content: center;
 `;
 
+const Teste = styled.div`
+	display: flex;
+	width: 1000px;
+	height: 500px;
+`;
+
 function App() {
 	const [currentPage, setCurrentPage] = React.useState(1);
 	const [showNavBar, setShowNavBar] = React.useState(false);

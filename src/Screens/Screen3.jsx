@@ -43,6 +43,12 @@ function Screen_3() {
 				<img src={Floor} className="pieceFloor" />
 				<img src={Floor} className="pieceFloor" />
 				<img src={Floor} className="pieceFloor" />
+				<img src={Floor} className="pieceFloor" />
+				<img src={Floor} className="pieceFloor" />
+				<img src={Floor} className="pieceFloor" />
+				<img src={Floor} className="pieceFloor" />
+				<img src={Floor} className="pieceFloor" />
+				<img src={Floor} className="pieceFloor" />
 			</Container2>
 		</Screen3>
 	);
