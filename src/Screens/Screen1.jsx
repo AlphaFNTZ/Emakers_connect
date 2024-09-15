@@ -6,7 +6,6 @@ import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArro
 
 const Screen1 = styled.div`
 	display: flex;
-	z-index: -2;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
@@ -56,6 +55,7 @@ const H2_Styled = styled.h2`
 const Link_Styled = styled.a`
 	display: flex;
 	align-items: center;
+	z-index: 5;
 	margin-top: 50px;
 	font-size: 30px;
 	font-weight: 300;
@@ -69,7 +69,7 @@ const Link_Styled = styled.a`
 	cursor: pointer;
 
 	svg {
-		position: absolute;
+		left: 40%;
 		opacity: 0;
 		transform: translateX(-20px);
 		transition: opacity 0.3s ease, transform 0.3s ease;
@@ -92,7 +92,7 @@ const Escolhas = styled.div`
 	align-items: center;
 	justify-content: center;
 	margin-top: 5vh;
-
+	z-index: 6;
 	@media (max-width: 767px) {
 		margin-top: 2vh;
 	}
@@ -116,6 +116,7 @@ const Rain = styled.div`
 	height: 10px;
 	background: white;
 	position: absolute;
+	z-index: 2;
 	top: -150px;
 	gap: 50px;
 

@@ -55,21 +55,6 @@ const NavBar = styled.div`
 	}
 `;
 
-const Logo = styled.div`
-	display: flex;
-	flex-direction: column;
-	margin-left: 20px;
-	height: 100%;
-	width: 190px;
-	justify-content: center;
-`;
-
-const Teste = styled.div`
-	display: flex;
-	width: 1000px;
-	height: 500px;
-`;
-
 function App() {
 	const [currentPage, setCurrentPage] = React.useState(1);
 	const [showNavBar, setShowNavBar] = React.useState(false);
