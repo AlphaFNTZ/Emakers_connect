@@ -35,11 +35,7 @@ const Balloon_text = styled.div`
 	max-width: 1100px;
 	height: auto;
 	max-height: 500px;
-<<<<<<< HEAD
-	font-family: "Mukta", sans-serif;
-=======
 	font-family: "Titillium Web", sans-serif;
->>>>>>> 9e34b147239f4c6fc6040250290004cd036fe25e
 	@media (max-width: 767px) {
 		width: 92%;
 		min-width: 300px;
@@ -82,14 +78,9 @@ const Balloon_aux_text_2 = styled.div`
 
 const Text = styled.p`
 	z-index: 6;
-	line-height: 0.9;
-	font-size: 25px;
-<<<<<<< HEAD
-	font-weight: 500;
-=======
 	line-height: 1.1;
+	font-size: 25px;
 	font-weight: 600;
->>>>>>> 9e34b147239f4c6fc6040250290004cd036fe25e
 	overflow-wrap: break-word;
 	word-spacing: 15px;
 	margin: 40px;
