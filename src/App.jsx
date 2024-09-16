@@ -173,8 +173,13 @@ function App() {
 	const containerRef = useRef(null);
 	const sectionRefs = useRef([]);
 	const debounceTimeout = useRef(null);
+<<<<<<< HEAD
 	const [isMobile, setIsMobile] = useState(window.innerWidth <= 767);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+=======
+	const touchStartY = useRef(0);
+	const touchEndY = useRef(0);
+>>>>>>> b70d5de9efc674c45b169a147160bcb837fc6cce
 
 	const scrollToSection = (page) => {
 		if (page >= 0 && page < sectionRefs.current.length) {
@@ -197,6 +202,7 @@ function App() {
 		}, 150); // Ajuste o delay conforme necessário
 	};
 
+<<<<<<< HEAD
 	const handleMenuClick = () => {
 		setIsMenuOpen(!isMenuOpen);
 	};
@@ -216,16 +222,57 @@ function App() {
 			window.removeEventListener("resize", handleResize);
 		};
 	}, []);
+=======
+	const handleTouchStart = (e) => {
+		touchStartY.current = e.touches[0].clientY;
+	};
+
+	const handleTouchMove = (e) => {
+		touchEndY.current = e.touches[0].clientY;
+	};
+
+	const handleTouchEnd = () => {
+		const deltaY = touchStartY.current - touchEndY.current;
+
+		// Verifica se o usuário deslizou para cima ou para baixo
+		if (Math.abs(deltaY) > 50) {
+			if (deltaY > 0) {
+				// Swipe para cima (próxima seção)
+				scrollToSection(currentPage + 1);
+			} else {
+				// Swipe para baixo (seção anterior)
+				scrollToSection(currentPage - 1);
+			}
+		}
+	};
+
+	const handleKeyDown = (event) => {
+		if (event.key === "ArrowDown") {
+			scrollToSection(currentPage + 1);
+		} else if (event.key === "ArrowUp") {
+			scrollToSection(currentPage - 1);
+		}
+	};
+>>>>>>> b70d5de9efc674c45b169a147160bcb837fc6cce
 
 	useEffect(() => {
 		const container = containerRef.current;
 		if (container) {
+			// Adiciona os eventos de scroll, touch e keyboard
 			container.addEventListener("wheel", handleScroll, { passive: false });
+			container.addEventListener("touchstart", handleTouchStart);
+			container.addEventListener("touchmove", handleTouchMove);
+			container.addEventListener("touchend", handleTouchEnd);
+			window.addEventListener("keydown", handleKeyDown); // Evento de teclado para navegação
 		}
 		return () => {
 			if (container) {
 				container.removeEventListener("wheel", handleScroll);
+				container.removeEventListener("touchstart", handleTouchStart);
+				container.removeEventListener("touchmove", handleTouchMove);
+				container.removeEventListener("touchend", handleTouchEnd);
 			}
+			window.removeEventListener("keydown", handleKeyDown); // Remove o evento de teclado
 		};
 	}, [currentPage]);
 
