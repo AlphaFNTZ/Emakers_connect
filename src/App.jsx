@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { createGlobalStyle, styled } from "styled-components";
 import Logo_NavBar from "../public/assets/Logo_NavBar.png";
+import Logo_NavBar_pequeno from "../public/assets/Logo_NavBar_pequeno.png";
 import Screen_1 from "./Screens/Screen1";
 import Screen_2 from "./Screens/Screen2";
 import Screen_3 from "./Screens/Screen3";
@@ -52,16 +53,7 @@ const NavBar = styled.div`
 	}
 
 	@media (max-width: 767px) {
-		height: 67px;
-		img {
-			border-radius: 5px;
-			box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
-			cursor: pointer;
-			align-self: center;
-			height: 40px;
-			width: 40px;
-			margin-left: 20px;
-		}
+		height: 60px;
 	}
 `;
 
@@ -86,8 +78,8 @@ const ContentMenu = styled.section`
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		margin-top: 67px;
-		height: calc(100vh - 67px);
+		margin-top: 60px;
+		height: 100%;
 		width: 305px;
 		left: 0px;
 		background-color: white;
@@ -99,8 +91,8 @@ const Filter = styled.section`
 		display: flex;
 		z-index: 7;
 		position: absolute;
-		margin-top: 67px;
-		height: calc(100vh - 67px);
+		margin-top: 60px;
+		height: 100%;
 		width: 100%;
 		background-color: #00000070;
 	}
@@ -108,8 +100,8 @@ const Filter = styled.section`
 
 const BurguerSyled = styled.label`
 	position: relative;
-	width: 40px;
-	height: 30px;
+	width: 30px;
+	height: 20px;
 	background: transparent;
 	cursor: pointer;
 	display: block;
@@ -150,7 +142,7 @@ const BurguerSyled = styled.label`
 	}
 
 	input:checked ~ span:nth-of-type(1) {
-		transform: rotate(45deg);
+		transform: rotate(37deg);
 		top: 0px;
 		left: 5px;
 	}
@@ -161,9 +153,23 @@ const BurguerSyled = styled.label`
 	}
 
 	input:checked ~ span:nth-of-type(3) {
-		transform: rotate(-45deg);
-		top: 28px;
+		transform: rotate(-37deg);
+		top: 18px;
 		left: 5px;
+	}
+`;
+
+const Logo_Button = styled.div`
+	display: flex;
+	position: absolute;
+	right: 10px;
+	height: 100%;
+	cursor: pointer;
+	img {
+		margin: 0;
+		padding: 0;
+		height: 41px;
+		width: 43px;
 	}
 `;
 
@@ -279,16 +285,21 @@ function App() {
 			<GlobalStyle />
 			<NavBar isVisible={showNavBar}>
 				{isMobile ? (
-					<BurguerSyled className="burger" htmlFor="burger">
-						<input
-							onClick={isMobile ? handleMenuClick : null}
-							type="checkbox"
-							id="burger"
-						/>
-						<span></span>
-						<span></span>
-						<span></span>
-					</BurguerSyled>
+					<>
+						<BurguerSyled className="burger" htmlFor="burger">
+							<input
+								onClick={isMobile ? handleMenuClick : null}
+								type="checkbox"
+								id="burger"
+							/>
+							<span></span>
+							<span></span>
+							<span></span>
+						</BurguerSyled>
+						<Logo_Button onClick={() => scrollToSection(0)}>
+							<img src={Logo_NavBar_pequeno} alt="" />
+						</Logo_Button>
+					</>
 				) : (
 					<img src={Logo_NavBar} alt="Logo" />
 				)}

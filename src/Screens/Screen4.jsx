@@ -1,6 +1,7 @@
 import * as React from "react";
 import { styled } from "styled-components";
 import { autoRun } from "../Animations/Animation_autoRun";
+import ContentScreens from "../Components/Content_screens";
 import BackGround_4 from "../../public/assets/Screen_4.png";
 import Cavern from "../../public/assets/Pedaco_caverna.png";
 import Cavern_back from "../../public/assets/Cavena_fundo.png";
@@ -100,8 +101,23 @@ const Balloon_text = styled.div`
 function Screen_4() {
 	return (
 		<Screen4 id="screen4">
-			<Ballon_title>Teste de balao titulo</Ballon_title>
-			<Balloon_text>Teste de balao texto</Balloon_text>
+			<ContentScreens
+				Content_Title="O formato do evento"
+				Content_Text="O Emakers Connect acontecerá de 21 a 25 de outubro, trazendo uma
+				programação variada que inclui palestras tanto presenciais quanto
+				online. O evento também proporcionará momentos de interação, como coffee
+				breaks e atividades extras, garantindo uma experiência rica em
+				networking e aprendizado. Com o objetivo de levar o que há de mais atual
+				no mercado tecnológico, o Emakers Connect se destaca por apresentar as
+				principais tendências da área. Além disso, o evento visa aproximar
+				empresas e estudantes dos cursos de Ciência da Computação e Sistemas de
+				Informação, incentivando o interesse desses jovens talentos pelo
+				mercado. O público-alvo é composto por estudantes, profissionais e
+				entusiastas de tecnologia, caracterizado por seu engajamento e busca por
+				estabelecer contatos com líderes do setor. O Emakers Connect oferece uma
+				oportunidade única para empresas se conectarem com futuros talentos e
+				fortalecerem suas relações com a comunidade acadêmica."
+			/>
 			<Back_cavern>
 				<img src={Cavern_back} className="pieceCavernBack" />
 				<img src={Cavern_back} className="pieceCavernBack" />

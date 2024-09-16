@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { styled } from "styled-components";
 import { autoRun } from "../Animations/Animation_autoRun";
+import ContentScreens from "../Components/Content_screens";
 import BackGround_2 from "../../public/assets/Screen_2.png";
 import Fence from "../../public/assets/Pedaco_cerca.png";
 import Mountain from "../../public/assets/Montanha.png";
@@ -83,45 +84,6 @@ const CharacterGengar = styled.div`
 	}
 `;
 
-const Ballon_title = styled.div`
-	display: flex;
-	position: relative;
-	align-items: center;
-	justify-content: center;
-	z-index: 6;
-	color: #181717;
-	background-color: white;
-	width: 500px;
-	height: 80px;
-	margin-bottom: 50px;
-	@media (max-width: 767px) {
-		width: 65%;
-		min-width: 275px;
-		height: 45px;
-		margin-bottom: 30px;
-	}
-`;
-
-const Balloon_text = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	position: relative;
-	z-index: 6;
-	color: #181717;
-	background-color: white;
-
-	width: 90%;
-	max-width: 1200px;
-	height: 500px;
-	@media (max-width: 767px) {
-		width: 92%;
-		min-width: 300px;
-		height: 400px;
-		margin-bottom: 100px;
-	}
-`;
-
 function Screen_2() {
 	const [currentImage, setCurrentImage] = useState(0);
 
@@ -141,8 +103,17 @@ function Screen_2() {
 				<img src={Mountain} className="pieceMountain" />
 				<img src={Mountain} className="pieceMountain" />
 			</Landscape>
-			<Ballon_title>Teste de balao titulo</Ballon_title>
-			<Balloon_text>Teste de balao texto</Balloon_text>
+			<ContentScreens
+				Content_Title="Um pouco sobre nos"
+				Content_Text="A Emakers Jr. e a empresa junior da Universidade Federal de Lavras
+					(UFLA), uma associacao sem fins lucrativos composta e gerida
+					principalmente por estudantes dos cursos de Sistemas de Informacao e
+					Ciencia da Computacao. Unimos estrategias e metodos tradicionais a
+					flexibilidade de uma visao jovem e conectada com o presente. Com uma
+					equipe forte, unida e comprometida, entregamos excelencia em cada
+					projeto, aplicando metodologias ageis para assegurar um ambiente de
+					desenvolvimento dinamico e eficiente."
+			/>
 			<CharacterGengar>
 				<img src={walkImages[currentImage]} alt="Character walking" />
 			</CharacterGengar>

@@ -2,6 +2,7 @@ import * as React from "react";
 import { styled } from "styled-components";
 import { autoRun } from "../Animations/Animation_autoRun";
 import Floor from "../../public/assets/Pedaco_chao.png";
+import ContentScreens from "../Components/Content_screens";
 
 const Screen3 = styled.section`
 	display: flex;
@@ -34,48 +35,24 @@ const Container2 = styled.div`
 	}
 `;
 
-const Ballon_title = styled.div`
-	display: flex;
-	position: relative;
-	align-items: center;
-	justify-content: center;
-	z-index: 6;
-	color: #181717;
-	background-color: white;
-	width: 500px;
-	height: 80px;
-	margin-bottom: 50px;
-	@media (max-width: 767px) {
-		width: 65%;
-		min-width: 275px;
-		height: 45px;
-		margin-bottom: 30px;
-	}
-`;
-
-const Balloon_text = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	position: relative;
-	z-index: 6;
-	color: #181717;
-	background-color: white;
-	width: 90%;
-	max-width: 1200px;
-	height: 500px;
-	@media (max-width: 767px) {
-		width: 92%;
-		min-width: 300px;
-		height: 400px;
-	}
-`;
-
 function Screen_3() {
 	return (
 		<Screen3 id="screen3">
-			<Ballon_title>Teste de balao titulo</Ballon_title>
-			<Balloon_text>Teste de balao texto</Balloon_text>
+			<ContentScreens
+				Content_Title="Sobre o evento"
+				Content_Text="A proposta do Emakers Connect é ser um evento dinâmico e inovador,
+				criado para conectar a comunidade acadêmica ao mundo da tecnologia. Com
+				um formato inclusivo e aberto a estudantes de todos os cursos, o evento
+				se destaca por seu foco nas tendências mais recentes do mercado
+				tecnológico, oferecendo uma plataforma única para aprendizado e
+				desenvolvimento profissional. Além de palestras e workshops, o Emakers
+				Connect promove um ambiente de networking, facilitando a interação entre
+				empresas, profissionais experientes e futuros talentos, proporcionando
+				oportunidades reais de conexão e troca de experiências que podem abrir
+				portas para colaborações e carreiras promissoras no setor. O evento é
+				pensado para ser um ponto de encontro onde a inovação e a tecnologia se
+				encontram com o potencial e a criatividade dos estudantes."
+			/>
 			<Container2>
 				<img src={Floor} className="pieceFloor" />
 				<img src={Floor} className="pieceFloor" />
