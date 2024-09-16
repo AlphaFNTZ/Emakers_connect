@@ -59,6 +59,8 @@ function App() {
 	const containerRef = useRef(null);
 	const sectionRefs = useRef([]);
 	const debounceTimeout = useRef(null);
+	const touchStartY = useRef(0);
+	const touchEndY = useRef(0);
 
 	const scrollToSection = (page) => {
 		if (page >= 0 && page < sectionRefs.current.length) {
@@ -81,14 +83,44 @@ function App() {
 		}, 150); // Ajuste o delay conforme necessário
 	};
 
+	const handleTouchStart = (e) => {
+		touchStartY.current = e.touches[0].clientY;
+	};
+
+	const handleTouchMove = (e) => {
+		touchEndY.current = e.touches[0].clientY;
+	};
+
+	const handleTouchEnd = () => {
+		const deltaY = touchStartY.current - touchEndY.current;
+
+		// Verifica se o usuário deslizou para cima ou para baixo
+		if (Math.abs(deltaY) > 50) {
+			if (deltaY > 0) {
+				// Swipe para cima (próxima seção)
+				scrollToSection(currentPage + 1);
+			} else {
+				// Swipe para baixo (seção anterior)
+				scrollToSection(currentPage - 1);
+			}
+		}
+	};
+
 	useEffect(() => {
 		const container = containerRef.current;
 		if (container) {
+			// Adiciona os eventos de scroll e touch para mobile
 			container.addEventListener("wheel", handleScroll, { passive: false });
+			container.addEventListener("touchstart", handleTouchStart);
+			container.addEventListener("touchmove", handleTouchMove);
+			container.addEventListener("touchend", handleTouchEnd);
 		}
 		return () => {
 			if (container) {
 				container.removeEventListener("wheel", handleScroll);
+				container.removeEventListener("touchstart", handleTouchStart);
+				container.removeEventListener("touchmove", handleTouchMove);
+				container.removeEventListener("touchend", handleTouchEnd);
 			}
 		};
 	}, [currentPage]);
