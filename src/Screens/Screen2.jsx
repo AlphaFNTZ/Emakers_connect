@@ -24,9 +24,6 @@ const Screen2 = styled.section`
 	scroll-snap-align: start;
 	background-image: url(${BackGround_2});
 	background-size: cover;
-	@media (max-width: 767px) {
-		justify-content: start;
-	}
 `;
 
 const Landscape = styled.div`
@@ -99,8 +96,8 @@ const Ballon_title = styled.div`
 	height: 80px;
 	margin-bottom: 50px;
 	@media (max-width: 767px) {
-		margin-top: 100px;
-		width: 275px;
+		width: 65%;
+		min-width: 275px;
 		height: 45px;
 		margin-bottom: 30px;
 	}
@@ -114,11 +111,15 @@ const Balloon_text = styled.div`
 	z-index: 6;
 	color: #181717;
 	background-color: white;
-	width: 1200px;
+
+	width: 90%;
+	max-width: 1200px;
 	height: 500px;
 	@media (max-width: 767px) {
-		width: 365px;
+		width: 92%;
+		min-width: 300px;
 		height: 400px;
+		margin-bottom: 100px;
 	}
 `;
 

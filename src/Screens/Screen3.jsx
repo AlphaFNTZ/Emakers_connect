@@ -35,9 +35,48 @@ const Container2 = styled.div`
 	}
 `;
 
+const Ballon_title = styled.div`
+	display: flex;
+	position: relative;
+	align-items: center;
+	justify-content: center;
+	z-index: 6;
+	color: #181717;
+	background-color: white;
+	width: 500px;
+	height: 80px;
+	margin-bottom: 50px;
+	@media (max-width: 767px) {
+		width: 65%;
+		min-width: 275px;
+		height: 45px;
+		margin-bottom: 30px;
+	}
+`;
+
+const Balloon_text = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	z-index: 6;
+	color: #181717;
+	background-color: white;
+	width: 90%;
+	max-width: 1200px;
+	height: 500px;
+	@media (max-width: 767px) {
+		width: 92%;
+		min-width: 300px;
+		height: 400px;
+	}
+`;
+
 function Screen_3() {
 	return (
 		<Screen3 id="screen3">
+			<Ballon_title>Teste de balao titulo</Ballon_title>
+			<Balloon_text>Teste de balao texto</Balloon_text>
 			<Container2>
 				<img src={Floor} className="pieceFloor" />
 				<img src={Floor} className="pieceFloor" />
