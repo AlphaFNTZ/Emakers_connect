@@ -105,14 +105,14 @@ function Screen_2() {
 			</Landscape>
 			<ContentScreens
 				Content_Title="Um pouco sobre nos"
-				Content_Text="A Emakers Jr. e a empresa junior da Universidade Federal de Lavras
-					(UFLA), uma associacao sem fins lucrativos composta e gerida
-					principalmente por estudantes dos cursos de Sistemas de Informacao e
-					Ciencia da Computacao. Unimos estrategias e metodos tradicionais a
-					flexibilidade de uma visao jovem e conectada com o presente. Com uma
-					equipe forte, unida e comprometida, entregamos excelencia em cada
-					projeto, aplicando metodologias ageis para assegurar um ambiente de
-					desenvolvimento dinamico e eficiente."
+				Content_Text="A Emakers Jr. é a empresa júnior da Universidade Federal de Lavras
+					(UFLA), uma associação sem fins lucrativos composta e gerida
+					principalmente por estudantes dos cursos de Sistemas de Informação e
+					Ciência da Computação. Unimos estratégias e métodos tradicionais à
+					flexibilidade de uma visão jovem e conectada com o presente. Com uma
+					equipe forte, unida e comprometida, entregamos excelência em cada
+					projeto, aplicando metodologias ágeis para assegurar um ambiente de
+					desenvolvimento dinâmico e eficiente."
 			/>
 			<CharacterGengar>
 				<img src={walkImages[currentImage]} alt="Character walking" />
