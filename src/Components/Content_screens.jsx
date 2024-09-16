@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { styled } from "styled-components";
 
 const Ballon_title = styled.div`
@@ -9,15 +9,14 @@ const Ballon_title = styled.div`
 	z-index: 6;
 	color: #181717;
 	background-color: white;
+	width: 600px;
 	height: 80px;
-	padding-left: 20px;
-	padding-right: 20px;
 	margin-bottom: 50px;
-	word-spacing: 15px;
 	margin-top: 5vh;
+	word-spacing: 15px;
 	font-family: "ArcadeClassic", sans-serif;
 	@media (max-width: 767px) {
-		width: 65%;
+		width: 300px;
 		min-width: 275px;
 		height: 45px;
 		margin-bottom: 30px;
@@ -36,29 +35,78 @@ const Balloon_text = styled.div`
 	max-width: 1100px;
 	height: auto;
 	max-height: 500px;
-	font-family: "SUSE", sans-serif;
+	font-family: "Titillium Web", sans-serif;
 	@media (max-width: 767px) {
 		width: 92%;
 		min-width: 300px;
-		height: 400px;
+		height: auto;
 		margin-bottom: 100px;
 	}
 `;
 
+const Balloon_aux_title_1 = styled.div`
+	position: absolute;
+	background-color: white;
+	z-index: 5;
+	width: calc(100% + 20px);
+	height: calc(100% - 20px);
+`;
+
+const Balloon_aux_title_2 = styled.div`
+	position: absolute;
+	background-color: white;
+	z-index: 5;
+	width: calc(100% - 20px);
+	height: calc(100% + 20px);
+`;
+
+const Balloon_aux_text_1 = styled.div`
+	position: absolute;
+	background-color: white;
+	z-index: 5;
+	width: calc(100% + 20px);
+	height: calc(100% - 20px);
+`;
+
+const Balloon_aux_text_2 = styled.div`
+	position: absolute;
+	background-color: white;
+	z-index: 5;
+	width: calc(100% - 20px);
+	height: calc(100% + 20px);
+`;
+
 const Text = styled.p`
+	z-index: 6;
 	line-height: 0.9;
 	font-size: 25px;
-	font-weight: 200;
+	line-height: 1.1;
+	font-weight: 600;
 	overflow-wrap: break-word;
 	word-spacing: 15px;
-	margin: 20px;
+	margin: 40px;
+	@media (max-width: 767px) {
+		line-height: 1;
+		font-size: 19px;
+		font-weight: 600;
+		overflow-wrap: break-word;
+		word-spacing: 15px;
+		margin: 20px;
+	}
 `;
 
 const Title = styled.h1`
+	z-index: 6;
 	line-height: 0.7;
 	font-size: 50px;
 	font-weight: 200;
+	text-align: center;
+	padding-left: 20px;
+	padding-right: 20px;
 	overflow-wrap: break-word;
+	@media (max-width: 767px) {
+		font-size: 30px;
+	}
 `;
 
 function ContentScreens({ Content_Title, Content_Text }) {
@@ -66,9 +114,13 @@ function ContentScreens({ Content_Title, Content_Text }) {
 		<>
 			<Ballon_title>
 				<Title>{Content_Title}</Title>
+				<Balloon_aux_title_1 />
+				<Balloon_aux_title_2 />
 			</Ballon_title>
 			<Balloon_text>
 				<Text>{Content_Text}</Text>
+				<Balloon_aux_text_1 />
+				<Balloon_aux_text_2 />
 			</Balloon_text>
 		</>
 	);
