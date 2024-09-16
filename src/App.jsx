@@ -139,7 +139,7 @@ const Link_Styled = styled.a`
 		width: 90%;
 	}
 
-	@media (max-width: 937px) {
+	@media (max-width: 970px) {
 		font-size: 17px;
 	}
 `;
