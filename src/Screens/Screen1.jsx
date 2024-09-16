@@ -109,6 +109,7 @@ const Logo_NavBar_Branco = styled.div`
 		justify-content: center;
 	}
 `;
+
 const Rain = styled.div`
 	display: flex;
 	width: 10px;
@@ -132,7 +133,7 @@ const Rain = styled.div`
 	}
 `;
 
-function Screen_1() {
+function Screen_1({ onLinkClick }){
 	const rainRefs = useRef([]);
 	const [reset, setReset] = useState(false);
 
@@ -145,7 +146,7 @@ function Screen_1() {
 
 		rainRefs.current.forEach((rain, index) => {
 			if (rain && animationSettings[index]) {
-				const { duration, delay, angle } = animationSettings[index];
+				const { duration, delay } = animationSettings[index];
 				rain.style.setProperty("--animation-duration", duration);
 				rain.style.setProperty("--animation-delay", delay);
 			}
@@ -168,6 +169,25 @@ function Screen_1() {
 		setReset((prev) => !prev); // Alternar estado para forçar reinício
 	}, []);
 
+	const handleLinkClick = (e, page) => {
+		e.preventDefault(); // Previne o comportamento padrão do link
+		onLinkClick(page);  // Chama a função para atualizar a página
+	
+		const targetId = e.currentTarget.getAttribute("href").substring(1);
+		const targetElement = document.getElementById(targetId);
+	
+		if (targetElement) {
+		  targetElement.scrollIntoView({ behavior: "smooth" });
+	
+		  // Garantir que a barra de navegação apareça
+		  setTimeout(() => {
+			const navBar = document.querySelector("nav");
+			if (navBar) {
+			  navBar.style.top = "0"; // Mostra a barra de navegação
+			}
+		  }, 500); // Tempo para a transição da barra de navegação
+		}
+	  };
 	const starPositions = ["-40vw", "10vw", "40vw"];
 	return (
 		<Screen1>
@@ -184,35 +204,37 @@ function Screen_1() {
 			<H1_Styled>Emakers connect</H1_Styled>
 			<H2_Styled>21 a 25 de outubro de 2024</H2_Styled>
 			<Escolhas>
-				<Link_Styled underline="none" href="#screen2">
-					<KeyboardDoubleArrowRightIcon
-						sx={{
-							color: "rgb(255, 106, 14)",
-							fontSize: 35,
-							marginRight: "10px",
-						}}
-					/>
-					Quem somos nos
+				<Link_Styled underline="none" href="#section2" onClick={(e) => handleLinkClick(e, 1)}>
+				<KeyboardDoubleArrowRightIcon
+					sx={{
+					color: "rgb(255, 106, 14)",
+					fontSize: 35,
+					marginRight: "10px",
+					}}
+				/>
+				Quem somos nos
 				</Link_Styled>
-				<Link_Styled underline="none" href="#screen3">
-					<KeyboardDoubleArrowRightIcon
-						sx={{
-							color: "rgb(255, 106, 14)",
-							fontSize: 35,
-							marginRight: "10px",
-						}}
-					/>
-					Como sera o evento
+
+				<Link_Styled underline="none" href="#section3" onClick={(e) => handleLinkClick(e, 2)}>
+				<KeyboardDoubleArrowRightIcon
+					sx={{
+					color: "rgb(255, 106, 14)",
+					fontSize: 35,
+					marginRight: "10px",
+					}}
+				/>
+				Como sera o evento
 				</Link_Styled>
-				<Link_Styled underline="none" href="#screen4">
-					<KeyboardDoubleArrowRightIcon
-						sx={{
-							color: "rgb(255, 106, 14)",
-							fontSize: 35,
-							marginRight: "10px",
-						}}
-					/>
-					O que e o evento
+
+				<Link_Styled underline="none" href="#section4" onClick={(e) => handleLinkClick(e, 3)}>
+				<KeyboardDoubleArrowRightIcon
+					sx={{
+					color: "rgb(255, 106, 14)",
+					fontSize: 35,
+					marginRight: "10px",
+					}}
+				/>
+				O que e o evento
 				</Link_Styled>
 			</Escolhas>
 		</Screen1>

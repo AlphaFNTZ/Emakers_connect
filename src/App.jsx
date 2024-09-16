@@ -55,7 +55,7 @@ const NavBar = styled.div`
 
 function App() {
 	const [currentPage, setCurrentPage] = useState(0);
-	const [showNavBar, setShowNavBar] = useState(false);
+	const [showNavBar, setShowNavBar] = useState(true);
 	const containerRef = useRef(null);
 	const sectionRefs = useRef([]);
 	const debounceTimeout = useRef(null);
@@ -103,10 +103,9 @@ function App() {
 			<NavBar isVisible={showNavBar}>
 				<img src={Logo_NavBar} alt="Logo" />
 			</NavBar>
-
 			<Container ref={containerRef}>
 				<section ref={(el) => (sectionRefs.current[0] = el)} id="section1">
-					<Screen_1 />
+					<Screen_1 onLinkClick={scrollToSection} />
 				</section>
 				<section ref={(el) => (sectionRefs.current[1] = el)} id="section2">
 					<Screen_2 />
