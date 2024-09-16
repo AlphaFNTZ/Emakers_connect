@@ -1,7 +1,7 @@
 import * as React from "react";
 import { styled, keyframes } from "styled-components";
 import BackGround_5 from "../../public/assets/Screen_5.png";
-import Logo_Branco from "../../public/assets/Logo_footer_branco.png";
+import Logo_Branco from "../../public/assets/Logo_footer_branco.gif";
 import Gengar from "../../public/assets/Sprite/gengar.gif";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
@@ -136,9 +136,10 @@ const P_Styled = styled.p`
 
 const Icon_Footer = styled.div`
 	position: absolute;
-	left: 5px;
+	left: 0;
+	bottom: -13px;
 	img {
-		width: 38px;
+		width: 60px;
 	}
 `;
 

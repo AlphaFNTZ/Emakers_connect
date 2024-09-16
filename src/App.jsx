@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { createGlobalStyle, styled } from "styled-components";
 import Logo_NavBar from "../public/assets/Logo_NavBar.png";
-import Logo_NavBar_pequeno from "../public/assets/Logo_NavBar_pequeno.png";
+import Logo_NavBar_pequeno from "../public/assets/Logo_NavBar_pequeno.gif";
 import Screen_1 from "./Screens/Screen1";
 import Screen_2 from "./Screens/Screen2";
 import Screen_3 from "./Screens/Screen3";
@@ -139,7 +139,7 @@ const Link_Styled = styled.a`
 		width: 90%;
 	}
 
-	@media (max-width: 970px) {
+	@media (max-width: 980px) {
 		font-size: 17px;
 	}
 `;
@@ -267,8 +267,10 @@ const Logo_Button = styled.div`
 	img {
 		margin: 0;
 		padding: 0;
-		height: 41px;
-		width: 43px;
+		//height: 41px;
+		//width: 43px;
+		height: 60px;
+		width: 60px;
 	}
 `;
 
