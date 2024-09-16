@@ -173,13 +173,10 @@ function App() {
 	const containerRef = useRef(null);
 	const sectionRefs = useRef([]);
 	const debounceTimeout = useRef(null);
-<<<<<<< HEAD
 	const [isMobile, setIsMobile] = useState(window.innerWidth <= 767);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
-=======
 	const touchStartY = useRef(0);
 	const touchEndY = useRef(0);
->>>>>>> b70d5de9efc674c45b169a147160bcb837fc6cce
 
 	const scrollToSection = (page) => {
 		if (page >= 0 && page < sectionRefs.current.length) {
@@ -202,7 +199,6 @@ function App() {
 		}, 150); // Ajuste o delay conforme necessário
 	};
 
-<<<<<<< HEAD
 	const handleMenuClick = () => {
 		setIsMenuOpen(!isMenuOpen);
 	};
@@ -222,7 +218,6 @@ function App() {
 			window.removeEventListener("resize", handleResize);
 		};
 	}, []);
-=======
 	const handleTouchStart = (e) => {
 		touchStartY.current = e.touches[0].clientY;
 	};
@@ -253,7 +248,6 @@ function App() {
 			scrollToSection(currentPage - 1);
 		}
 	};
->>>>>>> b70d5de9efc674c45b169a147160bcb837fc6cce
 
 	useEffect(() => {
 		const container = containerRef.current;
