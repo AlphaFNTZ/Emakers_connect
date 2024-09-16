@@ -57,71 +57,104 @@ const NavBar = styled.div`
 `;
 
 const LinksNav = styled.div`
-  display: ${(props) => (props.isMobile ? "none" : "flex")}; /* Esconde no mobile */
-  align-items: center;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: 20px;
-  gap: 10px; /* Adiciona espaçamento uniforme entre links e a barra laranja */
+	display: ${(props) =>
+		props.isMobile ? "none" : "flex"}; /* Esconde no mobile */
+	align-items: center;
+	justify-content: center;
+	margin-left: auto;
+	margin-right: 20px;
+	gap: 10px; /* Adiciona espaçamento uniforme entre links e a barra laranja */
 `;
 
-
-
 const LinkWrapper = styled.div`
-  position: relative;
-  padding: 5px 0;
- // margin-right: 15px;
-  overflow: hidden; /* Esconde o excesso da div roxa */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	width: auto;
+	// margin-right: 15px;
+	//overflow: hidden; /* Esconde o excesso da div roxa */
 `;
 
 const LinkBackground = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #800080; /* Fundo roxo */
-  z-index: -1; /* Coloca o fundo atrás do texto */
-  transform: ${(props) => (props.active ? "scaleX(1)" : "scaleX(0)")}; /* Expande apenas quando ativo */
-  transform-origin: left;
-  transition: transform 0.3s ease; /* Transição suave */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #270d32; /* Fundo roxo */
+	transform: ${(props) =>
+		props.active ? "scaleX(1)" : "scaleX(0)"}; /* Expande apenas quando ativo */
+	transform-origin: left;
+	transition: transform 0.3s ease; /* Transição suave */
+`;
+
+const Background_aux_1 = styled.div`
+	position: absolute;
+	background-color: #270d32;
+	width: calc(100% + 10px);
+	height: calc(100% - 10px);
+`;
+
+const Background_aux_2 = styled.div`
+	position: absolute;
+	background-color: #270d32;
+	width: calc(100% - 10px);
+	height: calc(100% + 10px);
 `;
 
 const Link_Styled = styled.a`
-  display: block;
-  font-size: 25px;
-  font-weight: 500;
-  text-decoration: none;
-  cursor: pointer;
-  color: ${(props) => (props.active ? "white" : "black")};
-  position: relative;
-  z-index: 1;
-  font-family: "ArcadeClassic", sans-serif;
-  text-align: center; /* Centraliza o texto */
-  word-spacing: 10px; /* Espaçamento adicional entre as palavras */
-  
-  &:hover {
-    color: #555;
-  }
+	display: block;
+	padding: 5px;
+	width: 100%;
+	height: 100%;
+	font-size: 25px;
+	font-weight: 500;
+	text-decoration: none;
+	cursor: pointer;
+	color: ${(props) => (props.active ? "white" : "black")};
+	position: relative;
+	z-index: 1;
+	font-family: "ArcadeClassic", sans-serif;
+	text-align: center; /* Centraliza o texto */
+	word-spacing: 10px; /* Espaçamento adicional entre as palavras */
 
-  @media (max-width: 937px) {
-    font-size: 17px;
-  }
+	&::before {
+		content: "";
+		position: absolute;
+		width: 0;
+		height: 1.5px;
+		bottom: 0;
+		left: 10px;
+		background-color: ${(props) => (props.active ? "white" : "black")};
+		visibility: hidden;
+		transition: all 0.2s ease-in-out;
+	}
+
+	&:hover::before {
+		visibility: visible;
+		width: 90%;
+	}
+
+	@media (max-width: 937px) {
+		font-size: 17px;
+	}
 `;
-
 
 const Barra = styled.div`
-  width: 4px;
-  height: 40px;
-  background-color: #ff6a0e;
-  align-self: center; /* Garante que a barra laranja esteja centralizada verticalmente */
-  
-  @media (max-width: 937px) {
-    height: 30px;
-    width: 3px;
-  }
-`;
+	width: 4px;
+	height: 40px;
+	background-color: #ff6a0e;
+	align-self: center; /* Garante que a barra laranja esteja centralizada verticalmente */
 
+	@media (max-width: 937px) {
+		height: 30px;
+		width: 3px;
+	}
+`;
 
 const Menu = styled.div`
 	display: ${(props) => (props.isOpen ? "flex" : "none")};
@@ -290,6 +323,7 @@ function App() {
 			window.removeEventListener("resize", handleResize);
 		};
 	}, []);
+
 	const handleTouchStart = (e) => {
 		touchStartY.current = e.touches[0].clientY;
 	};
@@ -371,33 +405,39 @@ function App() {
 				)}
 				<LinksNav isMobile={isMobile}>
 					<LinkWrapper>
-						<LinkBackground active={currentPage === 1} /> {/* Div de fundo */}
 						<Link_Styled
-						onClick={() => scrollToSection(1)}
-						active={currentPage === 1}
-						>
-						QUEM SOMOS NOS
+							onClick={() => scrollToSection(1)}
+							active={currentPage === 1}>
+							QUEM SOMOS NOS
 						</Link_Styled>
+						<LinkBackground active={currentPage === 1}>
+							<Background_aux_1 />
+							<Background_aux_2 />
+						</LinkBackground>
 					</LinkWrapper>
 					<Barra />
 					<LinkWrapper>
-						<LinkBackground active={currentPage === 2} />
 						<Link_Styled
-						onClick={() => scrollToSection(2)}
-						active={currentPage === 2}
-						>
-						O QUE E O EVENTO
+							onClick={() => scrollToSection(2)}
+							active={currentPage === 2}>
+							O QUE E O EVENTO
 						</Link_Styled>
+						<LinkBackground active={currentPage === 2}>
+							<Background_aux_1 />
+							<Background_aux_2 />
+						</LinkBackground>
 					</LinkWrapper>
 					<Barra />
 					<LinkWrapper>
-						<LinkBackground active={currentPage === 3} />
 						<Link_Styled
-						onClick={() => scrollToSection(3)}
-						active={currentPage === 3}
-						>
-						COMO SERA O EVENTO
+							onClick={() => scrollToSection(3)}
+							active={currentPage === 3}>
+							COMO SERA O EVENTO
 						</Link_Styled>
+						<LinkBackground active={currentPage === 3}>
+							<Background_aux_1 />
+							<Background_aux_2 />
+						</LinkBackground>
 					</LinkWrapper>
 				</LinksNav>
 			</NavBar>
