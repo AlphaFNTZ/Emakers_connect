@@ -10,7 +10,6 @@ const Screen1 = styled.div`
 	align-items: center;
 	justify-content: center;
 	height: 100vh;
-	scroll-snap-align: start;
 	background-image: url(${BackGround_1});
 	background-size: cover;
 	font-family: "ArcadeClassic", sans-serif;

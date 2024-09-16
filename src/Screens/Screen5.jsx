@@ -10,7 +10,6 @@ const Screen5 = styled.section`
 	align-items: center;
 	justify-content: center;
 	height: 100vh;
-	scroll-snap-align: start;
 	background-image: url(${BackGround_5});
 	background-size: cover;
 `;

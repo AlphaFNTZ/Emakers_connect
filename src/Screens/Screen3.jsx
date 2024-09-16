@@ -11,7 +11,6 @@ const Screen3 = styled.section`
 	align-items: center;
 	justify-content: center;
 	height: 100vh;
-	scroll-snap-align: start;
 	background: linear-gradient(0, rgb(44, 16, 45) 31%, #6b3b55 90%);
 `;
 
