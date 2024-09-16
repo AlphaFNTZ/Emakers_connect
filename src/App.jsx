@@ -106,14 +106,23 @@ function App() {
 		}
 	};
 
+	const handleKeyDown = (event) => {
+		if (event.key === "ArrowDown") {
+			scrollToSection(currentPage + 1);
+		} else if (event.key === "ArrowUp") {
+			scrollToSection(currentPage - 1);
+		}
+	};
+
 	useEffect(() => {
 		const container = containerRef.current;
 		if (container) {
-			// Adiciona os eventos de scroll e touch para mobile
+			// Adiciona os eventos de scroll, touch e keyboard
 			container.addEventListener("wheel", handleScroll, { passive: false });
 			container.addEventListener("touchstart", handleTouchStart);
 			container.addEventListener("touchmove", handleTouchMove);
 			container.addEventListener("touchend", handleTouchEnd);
+			window.addEventListener("keydown", handleKeyDown); // Evento de teclado para navegação
 		}
 		return () => {
 			if (container) {
@@ -122,6 +131,7 @@ function App() {
 				container.removeEventListener("touchmove", handleTouchMove);
 				container.removeEventListener("touchend", handleTouchEnd);
 			}
+			window.removeEventListener("keydown", handleKeyDown); // Remove o evento de teclado
 		};
 	}, [currentPage]);
 
