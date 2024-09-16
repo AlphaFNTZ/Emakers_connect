@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { createGlobalStyle, styled } from "styled-components";
 import Logo_NavBar from "../public/assets/Logo_NavBar.png";
-import Icon_Menu from "../public/assets/Icons/icon_menu.png";
 import Screen_1 from "./Screens/Screen1";
 import Screen_2 from "./Screens/Screen2";
 import Screen_3 from "./Screens/Screen3";
