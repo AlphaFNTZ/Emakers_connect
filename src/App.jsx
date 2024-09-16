@@ -49,9 +49,10 @@ const NavBar = styled.div`
 		height: 60px;
 		width: 190px;
 		margin-left: 20px;
+		cursor: pointer;
 	}
 
-	@media (max-width: 767px) {
+	@media (max-width: 769px) {
 		height: 60px;
 	}
 `;
@@ -72,8 +73,6 @@ const LinkWrapper = styled.div`
 	justify-content: center;
 	position: relative;
 	width: auto;
-	// margin-right: 15px;
-	//overflow: hidden; /* Esconde o excesso da div roxa */
 `;
 
 const LinkBackground = styled.div`
@@ -108,7 +107,7 @@ const Background_aux_2 = styled.div`
 
 const Link_Styled = styled.a`
 	display: block;
-	padding: 5px;
+	//padding: 5px;
 	width: 100%;
 	height: 100%;
 	font-size: 25px;
@@ -120,7 +119,7 @@ const Link_Styled = styled.a`
 	z-index: 1;
 	font-family: "ArcadeClassic", sans-serif;
 	text-align: center; /* Centraliza o texto */
-	word-spacing: 10px; /* Espaçamento adicional entre as palavras */
+	word-spacing: 5px; /* Espaçamento adicional entre as palavras */
 
 	&::before {
 		content: "";
@@ -139,8 +138,9 @@ const Link_Styled = styled.a`
 		width: 90%;
 	}
 
-	@media (max-width: 980px) {
-		font-size: 17px;
+	@media (max-width: 900px) {
+		font-size: 20px;
+		word-spacing: 4px;
 	}
 `;
 
@@ -150,7 +150,7 @@ const Barra = styled.div`
 	background-color: #ff6a0e;
 	align-self: center; /* Garante que a barra laranja esteja centralizada verticalmente */
 
-	@media (max-width: 937px) {
+	@media (max-width: 900px) {
 		height: 30px;
 		width: 3px;
 	}
@@ -164,13 +164,13 @@ const Menu = styled.div`
 	height: 100vh;
 	width: 100%;
 	z-index: 9;
-	@media (min-width: 768px) {
+	@media (min-width: 769px) {
 		display: none;
 	}
 `;
 
 const ContentMenu = styled.section`
-	@media (max-width: 767px) {
+	@media (max-width: 769px) {
 		display: flex;
 		z-index: 8;
 		position: absolute;
@@ -186,7 +186,7 @@ const ContentMenu = styled.section`
 `;
 
 const Filter = styled.section`
-	@media (max-width: 767px) {
+	@media (max-width: 769px) {
 		display: flex;
 		z-index: 7;
 		position: absolute;
@@ -280,7 +280,7 @@ function App() {
 	const containerRef = useRef(null);
 	const sectionRefs = useRef([]);
 	const debounceTimeout = useRef(null);
-	const [isMobile, setIsMobile] = useState(window.innerWidth <= 767);
+	const [isMobile, setIsMobile] = useState(window.innerWidth <= 769);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const touchStartY = useRef(0);
 	const touchEndY = useRef(0);
@@ -312,10 +312,10 @@ function App() {
 
 	useEffect(() => {
 		// Inicializa corretamente o estado no carregamento inicial
-		setIsMobile(window.innerWidth <= 767);
+		setIsMobile(window.innerWidth <= 769);
 
 		const handleResize = () => {
-			setIsMobile(window.innerWidth <= 767);
+			setIsMobile(window.innerWidth <= 769);
 		};
 
 		window.addEventListener("resize", handleResize);
@@ -403,7 +403,11 @@ function App() {
 						</Logo_Button>
 					</>
 				) : (
-					<img src={Logo_NavBar} alt="Logo" />
+					<img
+						src={Logo_NavBar}
+						alt="Logo"
+						onClick={() => scrollToSection(0)}
+					/>
 				)}
 				<LinksNav isMobile={isMobile}>
 					<LinkWrapper>

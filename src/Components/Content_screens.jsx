@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import { styled } from "styled-components";
 
 const Ballon_title = styled.div`
@@ -15,7 +15,7 @@ const Ballon_title = styled.div`
 	margin-top: 5vh;
 	word-spacing: 15px;
 	font-family: "ArcadeClassic", sans-serif;
-	@media (max-width: 767px) {
+	@media (max-width: 769px) {
 		width: 300px;
 		min-width: 275px;
 		height: 45px;
@@ -36,7 +36,7 @@ const Balloon_text = styled.div`
 	height: auto;
 	max-height: 500px;
 	font-family: "Titillium Web", sans-serif;
-	@media (max-width: 767px) {
+	@media (max-width: 769px) {
 		width: 92%;
 		min-width: 300px;
 		height: auto;
@@ -82,15 +82,17 @@ const Text = styled.p`
 	font-size: 25px;
 	font-weight: 600;
 	overflow-wrap: break-word;
-	word-spacing: 15px;
+	//word-spacing: 1px;
 	margin: 40px;
-	@media (max-width: 767px) {
+	text-align: justify; 
+	@media (max-width: 769px) {
 		line-height: 1;
 		font-size: 19px;
 		font-weight: 600;
 		overflow-wrap: break-word;
 		word-spacing: 15px;
 		margin: 20px;
+		word-spacing: -5px;
 	}
 `;
 
@@ -103,7 +105,7 @@ const Title = styled.h1`
 	padding-left: 20px;
 	padding-right: 20px;
 	overflow-wrap: break-word;
-	@media (max-width: 767px) {
+	@media (max-width: 769px) {
 		font-size: 30px;
 	}
 `;
