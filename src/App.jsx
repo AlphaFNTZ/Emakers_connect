@@ -44,7 +44,6 @@ const NavBar = styled.div`
 	border-bottom: 0.5px solid #111111;
 	z-index: 10;
 	transition: top 0.5s ease;
-
 	img {
 		align-self: center;
 		height: 60px;
@@ -56,6 +55,73 @@ const NavBar = styled.div`
 		height: 60px;
 	}
 `;
+
+const LinksNav = styled.div`
+  display: ${(props) => (props.isMobile ? "none" : "flex")}; /* Esconde no mobile */
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: 20px;
+  gap: 10px; /* Adiciona espaçamento uniforme entre links e a barra laranja */
+`;
+
+
+
+const LinkWrapper = styled.div`
+  position: relative;
+  padding: 5px 0;
+ // margin-right: 15px;
+  overflow: hidden; /* Esconde o excesso da div roxa */
+`;
+
+const LinkBackground = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #800080; /* Fundo roxo */
+  z-index: -1; /* Coloca o fundo atrás do texto */
+  transform: ${(props) => (props.active ? "scaleX(1)" : "scaleX(0)")}; /* Expande apenas quando ativo */
+  transform-origin: left;
+  transition: transform 0.3s ease; /* Transição suave */
+`;
+
+const Link_Styled = styled.a`
+  display: block;
+  font-size: 25px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  color: ${(props) => (props.active ? "white" : "black")};
+  position: relative;
+  z-index: 1;
+  font-family: "ArcadeClassic", sans-serif;
+  text-align: center; /* Centraliza o texto */
+  word-spacing: 10px; /* Espaçamento adicional entre as palavras */
+  
+  &:hover {
+    color: #555;
+  }
+
+  @media (max-width: 937px) {
+    font-size: 17px;
+  }
+`;
+
+
+const Barra = styled.div`
+  width: 4px;
+  height: 40px;
+  background-color: #ff6a0e;
+  align-self: center; /* Garante que a barra laranja esteja centralizada verticalmente */
+  
+  @media (max-width: 937px) {
+    height: 30px;
+    width: 3px;
+  }
+`;
+
 
 const Menu = styled.div`
 	display: ${(props) => (props.isOpen ? "flex" : "none")};
@@ -303,6 +369,37 @@ function App() {
 				) : (
 					<img src={Logo_NavBar} alt="Logo" />
 				)}
+				<LinksNav isMobile={isMobile}>
+					<LinkWrapper>
+						<LinkBackground active={currentPage === 1} /> {/* Div de fundo */}
+						<Link_Styled
+						onClick={() => scrollToSection(1)}
+						active={currentPage === 1}
+						>
+						QUEM SOMOS NOS
+						</Link_Styled>
+					</LinkWrapper>
+					<Barra />
+					<LinkWrapper>
+						<LinkBackground active={currentPage === 2} />
+						<Link_Styled
+						onClick={() => scrollToSection(2)}
+						active={currentPage === 2}
+						>
+						O QUE E O EVENTO
+						</Link_Styled>
+					</LinkWrapper>
+					<Barra />
+					<LinkWrapper>
+						<LinkBackground active={currentPage === 3} />
+						<Link_Styled
+						onClick={() => scrollToSection(3)}
+						active={currentPage === 3}
+						>
+						COMO SERA O EVENTO
+						</Link_Styled>
+					</LinkWrapper>
+				</LinksNav>
 			</NavBar>
 			<Menu isOpen={isMenuOpen}>
 				<ContentMenu />

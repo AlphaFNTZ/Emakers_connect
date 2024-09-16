@@ -36,7 +36,7 @@ const Balloon_text = styled.div`
 	max-width: 1100px;
 	height: auto;
 	max-height: 500px;
-	font-family: "SUSE", sans-serif;
+	font-family: "Mukta", sans-serif;
 	@media (max-width: 767px) {
 		width: 92%;
 		min-width: 300px;
@@ -48,7 +48,7 @@ const Balloon_text = styled.div`
 const Text = styled.p`
 	line-height: 0.9;
 	font-size: 25px;
-	font-weight: 200;
+	font-weight: 500;
 	overflow-wrap: break-word;
 	word-spacing: 15px;
 	margin: 20px;
