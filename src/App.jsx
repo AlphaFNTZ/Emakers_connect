@@ -7,28 +7,24 @@ import Screen_3 from "./Screens/Screen3";
 import Screen_4 from "./Screens/Screen4";
 import Screen_5 from "./Screens/Screen5";
 
-// Global Styles
 const GlobalStyle = createGlobalStyle`
-  body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Roboto;
-    color: #ffffff;
-    scroll-behavior: smooth; /* Ensure smooth scrolling */
-  }
+	body {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		font-family: Roboto;
+		color: #ffffff;
+	}
 `;
 
-// Container with scroll-snap-type for smooth scrolling
-const Container = styled.div`
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  height: 100vh;
-  z-index: 1;
+const Conteiner = styled.div`
+	scroll-snap-type: y mandatory;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	height: 100vh;
+	z-index: 1;
 `;
 
-// Navbar
 const NavBar = styled.div`
 	display: flex;
 	position: fixed;
@@ -165,7 +161,8 @@ const BurguerSyled = styled.label`
 `;
 
 function App() {
-  const [showNavBar, setShowNavBar] = useState(false);
+	const [currentPage, setCurrentPage] = React.useState(1);
+	const [showNavBar, setShowNavBar] = React.useState(false);
 	const [isMobile, setIsMobile] = useState(window.innerWidth <= 767);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
