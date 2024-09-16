@@ -155,9 +155,10 @@ const Carousel = styled.div`
 	display: flex;
 	overflow: hidden;
 	user-select: none;
-	width: 90%;
+	width: 1500px;
 	height: 229px;
 	position: relative; // Add position relative for absolute positioning inside
+	mask-image: linear-gradient(to right, transparent, black, transparent);
 
 	ul {
 		list-style: none;
@@ -165,7 +166,7 @@ const Carousel = styled.div`
 		display: flex;
 		justify-content: flex-start;
 		align-items: center;
-		width: 200%; // Width should be at least 200% to contain both sets of items
+		width: 250%;
 		animation: ${scroll} 20s linear infinite;
 		padding: 0;
 		margin: 0;
@@ -173,6 +174,11 @@ const Carousel = styled.div`
 
 	@media (max-width: 767px) {
 		height: 169px;
+		width: 100%;
+		ul {
+			width: 1000%;
+			animation: ${scroll} 15s linear infinite;
+		}
 	}
 `;
 
