@@ -26,7 +26,7 @@ const H1_Styled = styled.h1`
 	font-size: 200px;
 	font-weight: 200;
 	overflow-wrap: break-word;
-	@media (max-width: 767px) {
+	@media (max-width: 769px) {
 		width: 430px;
 		height: 130px;
 		font-size: 90px;
@@ -43,7 +43,7 @@ const H2_Styled = styled.h2`
 	height: 21px;
 	margin-top: 5vh;
 	word-spacing: 15px;
-	@media (max-width: 767px) {
+	@media (max-width: 769px) {
 		width: 430px;
 		height: 38px;
 		font-size: 24px;
@@ -79,7 +79,7 @@ const Link_Styled = styled.a`
 		transform: translateX(0);
 	}
 
-	@media (max-width: 767px) {
+	@media (max-width: 769px) {
 		margin-top: 10px;
 		font-size: 24px;
 	}
@@ -92,7 +92,7 @@ const Escolhas = styled.div`
 	justify-content: center;
 	margin-top: 5vh;
 	z-index: 6;
-	@media (max-width: 767px) {
+	@media (max-width: 769px) {
 		margin-top: 2vh;
 	}
 `;
@@ -103,7 +103,7 @@ const Logo_NavBar_Branco = styled.div`
 	width: 100%;
 	top: 20px;
 	left: 20px;
-	@media (max-width: 767px) {
+	@media (max-width: 769px) {
 		top: 20px;
 		left: 0px;
 		justify-content: center;

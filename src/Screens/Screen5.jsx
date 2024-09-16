@@ -116,6 +116,10 @@ const H1_Styled = styled.h1`
 	text-align: center;
 	line-height: 0.7;
 	overflow-wrap: break-word;
+	word-spacing: 10px;
+	@media (max-width:990px){
+		font-size: 40px;
+	}
 	@media (max-width: 767px) {
 		top: 100px;
 		font-size: 36px;
