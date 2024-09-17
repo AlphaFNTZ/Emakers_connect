@@ -121,7 +121,6 @@ const Link_Styled = styled.a`
 	font-family: "ArcadeClassic", sans-serif;
 	text-align: center; /* Centraliza o texto */
 	word-spacing: 5px; /* Espaçamento adicional entre as palavras */
-
 	&::before {
 		content: "";
 		position: absolute;
@@ -174,10 +173,9 @@ const ContentMenu = styled.section`
 	@media (max-width: 769px) {
 		display: flex;
 		z-index: 8;
-		gap: 30px;
 		position: absolute;
 		flex-direction: column;
-		justify-content: center;
+		justify-content: flex-start;
 		align-items: center;
 		margin-top: 60px;
 		height: 100%;
@@ -293,6 +291,13 @@ const P_Menu = styled.div`
 	width: 100%;
 	height: 13px;
 	color: black;
+`;
+
+const Hub = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	margin-top: 150px;
 `;
 
 function App() {
@@ -483,70 +488,72 @@ function App() {
 					<P_Menu>
 						<p>© 2024</p>
 					</P_Menu>
-					<LinkWrapper>
-						<Link_Styled
-							onClick={() => {
-								scrollToSection(1); // Navega para a página 0
-								if (isMobile) {
-									handleMenuClick(); // Aciona o menu apenas se for mobile
-								}
-							}}
-							active={currentPage === 1}>
-							QUEM SOMOS NOS
-						</Link_Styled>
-						<LinkBackground active={currentPage === 1}>
-							<Background_aux_1 />
-							<Background_aux_2 />
-						</LinkBackground>
-					</LinkWrapper>
-					<LinkWrapper>
-						<Link_Styled
-							onClick={() => {
-								scrollToSection(2); // Navega para a página 0
-								if (isMobile) {
-									handleMenuClick(); // Aciona o menu apenas se for mobile
-								}
-							}}
-							active={currentPage === 2}>
-							O QUE E O EVENTO
-						</Link_Styled>
-						<LinkBackground active={currentPage === 2}>
-							<Background_aux_1 />
-							<Background_aux_2 />
-						</LinkBackground>
-					</LinkWrapper>
-					<LinkWrapper>
-						<Link_Styled
-							onClick={() => {
-								scrollToSection(3); // Navega para a página 0
-								if (isMobile) {
-									handleMenuClick(); // Aciona o menu apenas se for mobile
-								}
-							}}
-							active={currentPage === 3}>
-							COMO SERA O EVENTO
-						</Link_Styled>
-						<LinkBackground active={currentPage === 3}>
-							<Background_aux_1 />
-							<Background_aux_2 />
-						</LinkBackground>
-					</LinkWrapper>
-					<LinkWrapper>
-						<Link_Styled
-							onClick={() => {
-								scrollToSection(4); // Navega para a página 0
-								if (isMobile) {
-									handleMenuClick(); // Aciona o menu apenas se for mobile
-								}
-							}}
-							active={currentPage === 4}>
-							PATROCINADORES
-						</Link_Styled>
-						<LinkBackground active={currentPage === 4}>
-							<Background_aux_1 />
-							<Background_aux_2 />
-						</LinkBackground>
-					</LinkWrapper>
+					<Hub>
+						<LinkWrapper>
+							<Link_Styled
+								onClick={() => {
+									scrollToSection(1); // Navega para a página 0
+									if (isMobile) {
+										handleMenuClick(); // Aciona o menu apenas se for mobile
+									}
+								}}
+								active={currentPage === 1}>
+								QUEM SOMOS NOS
+							</Link_Styled>
+							<LinkBackground active={currentPage === 1}>
+								<Background_aux_1 />
+								<Background_aux_2 />
+							</LinkBackground>
+						</LinkWrapper>
+						<LinkWrapper>
+							<Link_Styled
+								onClick={() => {
+									scrollToSection(2); // Navega para a página 0
+									if (isMobile) {
+										handleMenuClick(); // Aciona o menu apenas se for mobile
+									}
+								}}
+								active={currentPage === 2}>
+								O QUE E O EVENTO
+							</Link_Styled>
+							<LinkBackground active={currentPage === 2}>
+								<Background_aux_1 />
+								<Background_aux_2 />
+							</LinkBackground>
+						</LinkWrapper>
+						<LinkWrapper>
+							<Link_Styled
+								onClick={() => {
+									scrollToSection(3); // Navega para a página 0
+									if (isMobile) {
+										handleMenuClick(); // Aciona o menu apenas se for mobile
+									}
+								}}
+								active={currentPage === 3}>
+								COMO SERA O EVENTO
+							</Link_Styled>
+							<LinkBackground active={currentPage === 3}>
+								<Background_aux_1 />
+								<Background_aux_2 />
+							</LinkBackground>
+						</LinkWrapper>
+						<LinkWrapper>
+							<Link_Styled
+								onClick={() => {
+									scrollToSection(4); // Navega para a página 0
+									if (isMobile) {
+										handleMenuClick(); // Aciona o menu apenas se for mobile
+									}
+								}}
+								active={currentPage === 4}>
+								PATROCINADORES
+							</Link_Styled>
+							<LinkBackground active={currentPage === 4}>
+								<Background_aux_1 />
+								<Background_aux_2 />
+							</LinkBackground>
+						</LinkWrapper>
+					</Hub>
 				</ContentMenu>
 				<Filter />
 			</Menu>

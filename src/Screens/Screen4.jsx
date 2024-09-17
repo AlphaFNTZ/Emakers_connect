@@ -15,8 +15,7 @@ const Screen4 = styled.section`
 	align-items: center;
 	justify-content: center;
 	height: 100vh;
-	background-image: url(${BackGround_4});
-	background-size: cover;
+	background-color: black;
 `;
 
 const Container3 = styled.div`

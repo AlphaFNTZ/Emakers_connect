@@ -23,8 +23,7 @@ const Screen5 = styled.section`
 	align-items: center;
 	justify-content: center;
 	height: 100vh;
-	background-image: url(${BackGround_5});
-	background-size: cover;
+	background-color: black;
 `;
 
 const FullWidthBox = styled.div`
