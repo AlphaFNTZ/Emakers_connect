@@ -47,7 +47,7 @@ const H2_Styled = styled.h2`
 		width: 430px;
 		height: 38px;
 		font-size: 24px;
-		word-spacing: 0px;
+		word-spacing: 4px;
 	}
 `;
 
@@ -130,6 +130,10 @@ const Rain = styled.div`
 		100% {
 			transform: translate(100vw, 130vh); /* Manter rotação final */
 		}
+	}
+	@media (max-width: 769px){
+		width:5px;
+		height:5px;
 	}
 `;
 

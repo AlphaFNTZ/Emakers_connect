@@ -138,9 +138,9 @@ const Link_Styled = styled.a`
 		width: 90%;
 	}
 
-	@media (max-width: 900px) {
-		font-size: 20px;
-		word-spacing: 4px;
+	@media (max-width: 918px) {
+		font-size: 19px;
+		word-spacing: 3px;
 	}
 `;
 
@@ -150,7 +150,7 @@ const Barra = styled.div`
 	background-color: #ff6a0e;
 	align-self: center; /* Garante que a barra laranja esteja centralizada verticalmente */
 
-	@media (max-width: 900px) {
+	@media (max-width: 918px) {
 		height: 30px;
 		width: 3px;
 	}
