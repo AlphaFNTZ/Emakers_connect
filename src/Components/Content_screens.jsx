@@ -34,7 +34,7 @@ const Balloon_text = styled.div`
 	width: 90%;
 	max-width: 1100px;
 	height: auto;
-	max-height: 500px;
+	max-height: 600px;
 	font-family: "Titillium Web", sans-serif;
 	@media (max-width: 769px) {
 		width: 92%;
@@ -84,7 +84,7 @@ const Text = styled.p`
 	overflow-wrap: break-word;
 	//word-spacing: 1px;
 	margin: 40px;
-	text-align: justify; 
+	text-align: justify;
 	@media (max-width: 769px) {
 		line-height: 1;
 		font-size: 19px;
@@ -92,7 +92,7 @@ const Text = styled.p`
 		overflow-wrap: break-word;
 		word-spacing: 15px;
 		margin: 20px;
-		word-spacing: -5px;
+		word-spacing: -2px;
 	}
 `;
 
@@ -110,19 +110,42 @@ const Title = styled.h1`
 	}
 `;
 
-function ContentScreens({ Content_Title, Content_Text }) {
+function ContentScreens({
+	Content_Title,
+	Content_Text,
+	Content_Mobile_Title,
+	Content_Mobile_Text,
+}) {
 	return (
 		<>
-			<Ballon_title>
-				<Title>{Content_Title}</Title>
-				<Balloon_aux_title_1 />
-				<Balloon_aux_title_2 />
-			</Ballon_title>
-			<Balloon_text>
-				<Text>{Content_Text}</Text>
-				<Balloon_aux_text_1 />
-				<Balloon_aux_text_2 />
-			</Balloon_text>
+			{Content_Title && (
+				<Ballon_title>
+					<Title>{Content_Title}</Title>
+					<Balloon_aux_title_1 />
+					<Balloon_aux_title_2 />
+				</Ballon_title>
+			)}
+			{Content_Text && (
+				<Balloon_text>
+					<Text>{Content_Text}</Text>
+					<Balloon_aux_text_1 />
+					<Balloon_aux_text_2 />
+				</Balloon_text>
+			)}
+			{Content_Mobile_Title && (
+				<Ballon_title>
+					<Title>{Content_Mobile_Title}</Title>
+					<Balloon_aux_title_1 />
+					<Balloon_aux_title_2 />
+				</Ballon_title>
+			)}
+			{Content_Mobile_Text && (
+				<Balloon_text>
+					<Text>{Content_Mobile_Text}</Text>
+					<Balloon_aux_text_1 />
+					<Balloon_aux_text_2 />
+				</Balloon_text>
+			)}
 		</>
 	);
 }

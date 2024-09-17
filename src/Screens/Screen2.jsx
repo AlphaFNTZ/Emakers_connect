@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useMediaQuery } from "@mui/material";
 import { styled } from "styled-components";
 import { autoRun } from "../Animations/Animation_autoRun";
 import ContentScreens from "../Components/Content_screens";
@@ -84,8 +85,21 @@ const CharacterGengar = styled.div`
 	}
 `;
 
+const Content = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	@media (max-width: 767px) {
+		margin-bottom: 100px;
+	}
+`;
+
 function Screen_2() {
 	const [currentImage, setCurrentImage] = useState(0);
+	const isMobile = useMediaQuery("(max-width: 767px)");
 
 	useEffect(() => {
 		const interval = setInterval(() => {
@@ -103,17 +117,22 @@ function Screen_2() {
 				<img src={Mountain} className="pieceMountain" />
 				<img src={Mountain} className="pieceMountain" />
 			</Landscape>
-			<ContentScreens
-				Content_Title="Um pouco sobre nos"
-				Content_Text="A Emakers Jr. é a empresa júnior da Universidade Federal de Lavras
-					(UFLA), uma associação sem fins lucrativos composta e gerida
-					principalmente por estudantes dos cursos de Sistemas de Informação e
-					Ciência da Computação. Unimos estratégias e métodos tradicionais à
-					flexibilidade de uma visão jovem e conectada com o presente. Com uma
-					equipe forte, unida e comprometida, entregamos excelência em cada
-					projeto, aplicando metodologias ágeis para assegurar um ambiente de
-					desenvolvimento dinâmico e eficiente."
-			/>
+			<Content>
+				<ContentScreens
+					Content_Title={isMobile ? undefined : "Um pouco sobre nos"}
+					Content_Text={
+						isMobile
+							? undefined
+							: "A Emakers Jr. é a empresa júnior da Universidade Federal de Lavras (UFLA), uma associação sem fins lucrativos composta e gerida principalmente por estudantes dos cursos de Sistemas de Informação e Ciência da Computação. Unimos estratégias e métodos tradicionais à flexibilidade de uma visão jovem e conectada com o presente. Com uma equipe forte, unida e comprometida, entregamos excelência em cada projeto, aplicando metodologias ágeis para assegurar um ambiente de desenvolvimento dinâmico e eficiente."
+					}
+					Content_Mobile_Title={isMobile ? "Sobre nos" : undefined}
+					Content_Mobile_Text={
+						isMobile
+							? "A Emakers Jr. é uma empresa júnior da UFLA, formada por estudantes de Sistemas de Informação e Ciência da Computação, oferecendo soluções inovadoras com metodologias ágeis."
+							: undefined
+					}
+				/>
+			</Content>
 			<CharacterGengar>
 				<img src={walkImages[currentImage]} alt="Character walking" />
 			</CharacterGengar>

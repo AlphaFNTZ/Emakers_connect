@@ -6,6 +6,7 @@ import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArro
 
 const Screen1 = styled.div`
 	display: flex;
+	position: absolute;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
@@ -68,15 +69,15 @@ const Link_Styled = styled.a`
 	cursor: pointer;
 
 	svg {
-		left: 40%;
+		position: absolute;
 		opacity: 0;
-		transform: translateX(-20px);
+		transform: translateX(0px);
 		transition: opacity 0.3s ease, transform 0.3s ease;
 	}
 
 	&:hover svg {
 		opacity: 1;
-		transform: translateX(0);
+		transform: translateX(-40px);
 	}
 
 	@media (max-width: 769px) {
@@ -219,7 +220,6 @@ function Screen_1({ onLinkClick }) {
 					/>
 					Quem somos nos
 				</Link_Styled>
-
 				<Link_Styled
 					underline="none"
 					href="#section3"
@@ -233,7 +233,6 @@ function Screen_1({ onLinkClick }) {
 					/>
 					Como sera o evento
 				</Link_Styled>
-
 				<Link_Styled
 					underline="none"
 					href="#section4"

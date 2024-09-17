@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { createGlobalStyle, styled } from "styled-components";
 import Logo_NavBar from "../public/assets/Logo_NavBar.png";
-import Logo_NavBar_pequeno from "../public/assets/Logo_NavBar_pequeno.gif";
+import Logo_NavBar_pequeno from "../public/assets/Logo_NavBar_pequeno.png";
 import Screen_1 from "./Screens/Screen1";
 import Screen_2 from "./Screens/Screen2";
 import Screen_3 from "./Screens/Screen3";
@@ -107,7 +107,8 @@ const Background_aux_2 = styled.div`
 
 const Link_Styled = styled.a`
 	display: block;
-	//padding: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
 	width: 100%;
 	height: 100%;
 	font-size: 25px;
@@ -145,7 +146,7 @@ const Link_Styled = styled.a`
 `;
 
 const Barra = styled.div`
-	width: 4px;
+	width: 3px;
 	height: 40px;
 	background-color: #ff6a0e;
 	align-self: center; /* Garante que a barra laranja esteja centralizada verticalmente */
@@ -173,6 +174,7 @@ const ContentMenu = styled.section`
 	@media (max-width: 769px) {
 		display: flex;
 		z-index: 8;
+		gap: 30px;
 		position: absolute;
 		flex-direction: column;
 		justify-content: center;
@@ -197,7 +199,7 @@ const Filter = styled.section`
 	}
 `;
 
-const BurguerSyled = styled.label`
+const BurguerStyled = styled.label`
 	position: relative;
 	width: 30px;
 	height: 20px;
@@ -206,9 +208,6 @@ const BurguerSyled = styled.label`
 	display: block;
 	align-self: center;
 	margin-left: 20px;
-	input {
-		display: none;
-	}
 
 	span {
 		display: block;
@@ -236,26 +235,30 @@ const BurguerSyled = styled.label`
 
 	span:nth-of-type(3) {
 		top: 100%;
-		transform-origin: left center;
 		transform: translateY(-100%);
+		transform-origin: left center;
 	}
 
-	input:checked ~ span:nth-of-type(1) {
+	${(props) =>
+		props.isOpen &&
+		`
+		span:nth-of-type(1) {
 		transform: rotate(37deg);
 		top: 0px;
 		left: 5px;
-	}
+		}
 
-	input:checked ~ span:nth-of-type(2) {
-		width: 0%;
-		opacity: 0;
-	}
+		span:nth-of-type(2) {
+			width: 0%;
+			opacity: 0;
+		}
 
-	input:checked ~ span:nth-of-type(3) {
-		transform: rotate(-37deg);
-		top: 18px;
-		left: 5px;
-	}
+		span:nth-of-type(3) {
+			transform: rotate(-37deg);
+			top: 18px;
+			left: 5px;
+		}
+	`}
 `;
 
 const Logo_Button = styled.div`
@@ -267,11 +270,29 @@ const Logo_Button = styled.div`
 	img {
 		margin: 0;
 		padding: 0;
-		//height: 41px;
-		//width: 43px;
-		height: 60px;
-		width: 60px;
+		height: 41px;
+		width: 43px;
 	}
+`;
+
+const Logo_Menu = styled.div`
+	position: absolute;
+	top: 40px;
+	img {
+		width: 133px;
+	}
+`;
+
+const P_Menu = styled.div`
+	position: absolute;
+	font-family: "Titillium Web", sans-serif;
+	font-size: 12px;
+	font-weight: 600;
+	text-align: center;
+	bottom: 100px;
+	width: 100%;
+	height: 13px;
+	color: black;
 `;
 
 function App() {
@@ -388,7 +409,7 @@ function App() {
 			<NavBar isVisible={showNavBar}>
 				{isMobile ? (
 					<>
-						<BurguerSyled className="burger" htmlFor="burger">
+						{/*<BurguerSyled className="burger" htmlFor="burger">
 							<input
 								onClick={isMobile ? handleMenuClick : null}
 								type="checkbox"
@@ -397,7 +418,14 @@ function App() {
 							<span></span>
 							<span></span>
 							<span></span>
-						</BurguerSyled>
+						</BurguerSyled>*/}
+						<BurguerStyled
+							isOpen={isMenuOpen}
+							onClick={isMobile ? handleMenuClick : null}>
+							<span></span>
+							<span></span>
+							<span></span>
+						</BurguerStyled>
 						<Logo_Button onClick={() => scrollToSection(0)}>
 							<img src={Logo_NavBar_pequeno} alt="" />
 						</Logo_Button>
@@ -448,7 +476,78 @@ function App() {
 				</LinksNav>
 			</NavBar>
 			<Menu isOpen={isMenuOpen}>
-				<ContentMenu />
+				<ContentMenu>
+					<Logo_Menu>
+						<img src={Logo_NavBar} alt="" />
+					</Logo_Menu>
+					<P_Menu>
+						<p>© 2024</p>
+					</P_Menu>
+					<LinkWrapper>
+						<Link_Styled
+							onClick={() => {
+								scrollToSection(1); // Navega para a página 0
+								if (isMobile) {
+									handleMenuClick(); // Aciona o menu apenas se for mobile
+								}
+							}}
+							active={currentPage === 1}>
+							QUEM SOMOS NOS
+						</Link_Styled>
+						<LinkBackground active={currentPage === 1}>
+							<Background_aux_1 />
+							<Background_aux_2 />
+						</LinkBackground>
+					</LinkWrapper>
+					<LinkWrapper>
+						<Link_Styled
+							onClick={() => {
+								scrollToSection(2); // Navega para a página 0
+								if (isMobile) {
+									handleMenuClick(); // Aciona o menu apenas se for mobile
+								}
+							}}
+							active={currentPage === 2}>
+							O QUE E O EVENTO
+						</Link_Styled>
+						<LinkBackground active={currentPage === 2}>
+							<Background_aux_1 />
+							<Background_aux_2 />
+						</LinkBackground>
+					</LinkWrapper>
+					<LinkWrapper>
+						<Link_Styled
+							onClick={() => {
+								scrollToSection(3); // Navega para a página 0
+								if (isMobile) {
+									handleMenuClick(); // Aciona o menu apenas se for mobile
+								}
+							}}
+							active={currentPage === 3}>
+							COMO SERA O EVENTO
+						</Link_Styled>
+						<LinkBackground active={currentPage === 3}>
+							<Background_aux_1 />
+							<Background_aux_2 />
+						</LinkBackground>
+					</LinkWrapper>
+					<LinkWrapper>
+						<Link_Styled
+							onClick={() => {
+								scrollToSection(4); // Navega para a página 0
+								if (isMobile) {
+									handleMenuClick(); // Aciona o menu apenas se for mobile
+								}
+							}}
+							active={currentPage === 4}>
+							PATROCINADORES
+						</Link_Styled>
+						<LinkBackground active={currentPage === 4}>
+							<Background_aux_1 />
+							<Background_aux_2 />
+						</LinkBackground>
+					</LinkWrapper>
+				</ContentMenu>
 				<Filter />
 			</Menu>
 			<Container ref={containerRef}>

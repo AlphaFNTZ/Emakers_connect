@@ -117,12 +117,15 @@ const H1_Styled = styled.h1`
 	line-height: 0.7;
 	overflow-wrap: break-word;
 	word-spacing: 10px;
-	@media (max-width:990px){
+	@media (max-width: 990px) {
 		font-size: 40px;
 	}
 	@media (max-width: 767px) {
-		top: 100px;
+		top: 120px;
 		font-size: 36px;
+	}
+	@media (max-height: 840px) {
+		display: none;
 	}
 `;
 
@@ -190,16 +193,19 @@ const Carousel = styled.div`
 const Caracter_Gengar = styled.div`
 	position: absolute;
 	z-index: 2;
-	top: 300px;
+	bottom: 630px;
+	@media (max-width: 767px) {
+		bottom: 550px;
+	}
 `;
 
 function Screen_5() {
 	return (
 		<Screen5 id="screen5">
 			<H1_Styled>Contamos com a sua presenca</H1_Styled>
-			{/*<Caracter_Gengar>
-				<img width={"170px"} src={Gengar} />
-			</Caracter_Gengar>*/}
+			<Caracter_Gengar>
+				<img width={"180px"} src={Gengar} />
+			</Caracter_Gengar>
 			<FullWidthBox>
 				<H1_Content_Styled className="custom-h1">
 					Patrocinadores

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useMediaQuery } from "@mui/material";
 import { styled } from "styled-components";
 import { autoRun } from "../Animations/Animation_autoRun";
 import ContentScreens from "../Components/Content_screens";
@@ -60,64 +61,38 @@ const Back_cavern = styled.div`
 	}
 `;
 
-const Ballon_title = styled.div`
+const Content = styled.div`
 	display: flex;
-	position: relative;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	z-index: 6;
-	color: #181717;
-	background-color: white;
-	width: 500px;
-	height: 80px;
-	margin-bottom: 50px;
+	width: 100%;
+	height: 100%;
 	@media (max-width: 767px) {
-		margin-top: 120px;
-		width: 65%;
-		min-width: 275px;
-		height: 45px;
-		margin-bottom: 30px;
-	}
-`;
-
-const Balloon_text = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	position: relative;
-	z-index: 6;
-	color: #181717;
-	background-color: white;
-	width: 90%;
-	max-width: 1200px;
-	height: 500px;
-	@media (max-width: 767px) {
-		width: 92%;
-		min-width: 300px;
-		height: 400px;
+		margin-top: 200px;
 	}
 `;
 
 function Screen_4() {
+	const isMobile = useMediaQuery("(max-width: 767px)");
 	return (
 		<Screen4 id="screen4">
-			<ContentScreens
-				Content_Title="O formato do evento"
-				Content_Text="O Emakers Connect acontecerá de 21 a 25 de outubro, trazendo uma
-				programação variada que inclui palestras tanto presenciais quanto
-				online. O evento também proporcionará momentos de interação, como coffee
-				breaks e atividades extras, garantindo uma experiência rica em
-				networking e aprendizado. Com o objetivo de levar o que há de mais atual
-				no mercado tecnológico, o Emakers Connect se destaca por apresentar as
-				principais tendências da área. Além disso, o evento visa aproximar
-				empresas e estudantes dos cursos de Ciência da Computação e Sistemas de
-				Informação, incentivando o interesse desses jovens talentos pelo
-				mercado. O público-alvo é composto por estudantes, profissionais e
-				entusiastas de tecnologia, caracterizado por seu engajamento e busca por
-				estabelecer contatos com líderes do setor. O Emakers Connect oferece uma
-				oportunidade única para empresas se conectarem com futuros talentos e
-				fortalecerem suas relações com a comunidade acadêmica."
-			/>
+			<Content>
+				<ContentScreens
+					Content_Title={isMobile ? undefined : "O formato do evento"}
+					Content_Text={
+						isMobile
+							? undefined
+							: "O Emakers Connect acontecerá de 21 a 25 de outubro, trazendo uma programação variada que inclui palestras tanto presenciais quanto online, além de momentos de interação como coffee breaks e atividades extras, garantindo uma experiência rica em networking e aprendizado. O evento se destaca por apresentar as principais tendências da área tecnológica e visa aproximar empresas e estudantes dos cursos de Ciência da Computação e Sistemas de Informação, incentivando o interesse desses jovens talentos pelo mercado. O público-alvo é composto por estudantes, profissionais e entusiastas de tecnologia, caracterizado por seu engajamento e busca por estabelecer contatos com líderes do setor. O Emakers Connect oferece uma oportunidade única para empresas se conectarem com futuros talentos e fortalecerem suas relações com a comunidade acadêmica."
+					}
+					Content_Mobile_Title={isMobile ? "O formato do evento" : undefined}
+					Content_Mobile_Text={
+						isMobile
+							? "O Emakers Connect, que ocorrerá de 21 a 25 de outubro, é um evento que oferece palestras presenciais e online, além de momentos de networking e aprendizado, como coffee breaks e atividades extras. Focado nas principais tendências tecnológicas, o evento aproxima empresas e estudantes de Ciência da Computação e Sistemas de Informação, promovendo oportunidades de contato entre jovens talentos e líderes do setor. É uma chance para empresas se conectarem com futuros profissionais e fortalecerem laços com a comunidade acadêmica."
+							: undefined
+					}
+				/>
+			</Content>
 			<Back_cavern>
 				<img src={Cavern_back} className="pieceCavernBack" />
 				<img src={Cavern_back} className="pieceCavernBack" />
